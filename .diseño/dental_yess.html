@@ -1,0 +1,412 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap');
+  .dy-root { font-family: 'Poppins', sans-serif; background: #F9F7F4; color: #2D2D3A; }
+  .dy-root * { box-sizing: border-box; margin: 0; padding: 0; }
+  .dy-nav { background: #fff; border-bottom: 0.5px solid #e0d9f0; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 10; }
+  .dy-nav-logo { display: flex; align-items: center; gap: 10px; }
+  .dy-nav-logo-circle { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #6B3FA0; display: flex; align-items: center; justify-content: center; }
+  .dy-nav-brand { font-size: 14px; font-weight: 700; color: #6B3FA0; letter-spacing: 0.05em; line-height: 1.1; }
+  .dy-nav-brand span { display: block; font-size: 9px; font-weight: 400; letter-spacing: 0.12em; color: #8B6EC0; }
+  .dy-nav-links { display: flex; gap: 1.5rem; align-items: center; }
+  .dy-nav-links a { font-size: 12px; color: #2D2D3A; text-decoration: none; font-weight: 500; }
+  .dy-nav-cta { background: #6B3FA0; color: #fff; border: none; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: 'Poppins', sans-serif; }
+
+  .dy-hero { background: linear-gradient(135deg, #6B3FA0 0%, #8B5CC8 60%, #7BAE7F 100%); min-height: 520px; display: flex; align-items: center; padding: 3rem 2rem; position: relative; overflow: hidden; }
+  .dy-hero-blob { position: absolute; border-radius: 50%; opacity: 0.12; }
+  .dy-hero-blob-1 { width: 300px; height: 300px; background: #7BAE7F; top: -80px; right: -60px; }
+  .dy-hero-blob-2 { width: 200px; height: 200px; background: #E8DEFF; bottom: -60px; left: 10%; }
+  .dy-hero-content { max-width: 480px; z-index: 1; }
+  .dy-hero-tag { display: inline-block; background: rgba(255,255,255,0.2); color: #fff; font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 20px; margin-bottom: 1rem; letter-spacing: 0.08em; }
+  .dy-hero h1 { font-size: 32px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 1rem; }
+  .dy-hero h1 em { font-style: normal; color: #C8F0D4; }
+  .dy-hero p { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 1.5rem; font-family: 'Inter', sans-serif; }
+  .dy-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .dy-btn-primary { background: #fff; color: #6B3FA0; border: none; padding: 12px 24px; border-radius: 24px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 6px; }
+  .dy-btn-wa { background: #4CAF85; color: #fff; border: none; padding: 12px 24px; border-radius: 24px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'Poppins', sans-serif; display: flex; align-items: center; gap: 6px; }
+  .dy-hero-img { flex: 1; display: flex; justify-content: flex-end; align-items: center; z-index: 1; padding-left: 2rem; }
+  .dy-hero-placeholder { width: 240px; height: 320px; background: rgba(255,255,255,0.15); border-radius: 120px 120px 80px 80px; border: 2px dashed rgba(255,255,255,0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-size: 12px; gap: 8px; }
+
+  .dy-section { padding: 3rem 2rem; }
+  .dy-section-label { font-size: 11px; font-weight: 600; color: #7BAE7F; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .dy-section h2 { font-size: 24px; font-weight: 700; color: #2D2D3A; margin-bottom: 0.5rem; }
+  .dy-section-sub { font-size: 14px; color: #6B6B7B; font-family: 'Inter', sans-serif; line-height: 1.7; margin-bottom: 2rem; }
+
+  .dy-about { background: #fff; display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+  .dy-about-img { width: 220px; height: 280px; background: #E8DEFF; border-radius: 100px 100px 60px 60px; border: 2px dashed #8B5CC8; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #8B5CC8; font-size: 12px; gap: 6px; }
+  .dy-about-content { flex: 1; min-width: 240px; }
+  .dy-about-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 1.25rem; }
+  .dy-badge { background: #F0E8FF; color: #6B3FA0; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
+  .dy-badge-green { background: #E1F5EE; color: #0F6E56; }
+
+  .dy-services { background: #F9F7F4; }
+  .dy-service-group { margin-bottom: 2rem; }
+  .dy-service-group-title { font-size: 13px; font-weight: 700; color: #6B3FA0; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+  .dy-service-group-title::after { content: ''; flex: 1; height: 0.5px; background: #D4C8F0; }
+  .dy-service-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+  .dy-service-card { background: #fff; border: 0.5px solid #e0d9f0; border-radius: 12px; padding: 1rem; text-align: center; }
+  .dy-service-card-icon { width: 44px; height: 44px; background: #F0E8FF; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
+  .dy-service-card-icon i { font-size: 20px; color: #6B3FA0; }
+  .dy-service-card p { font-size: 12px; font-weight: 600; color: #2D2D3A; line-height: 1.3; }
+
+  /* Bloques especiales */
+  .dy-special { display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap; padding: 3rem 2rem; }
+  .dy-special-reverse { flex-direction: row-reverse; }
+  .dy-special-img { width: 260px; height: 260px; border-radius: 50%; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 12px; gap: 8px; border: 2px dashed; }
+  .dy-special-img i { font-size: 48px; }
+  .dy-special-content { flex: 1; min-width: 240px; }
+  .dy-special-content h2 { font-size: 26px; font-weight: 700; margin-bottom: 0.75rem; }
+  .dy-special-content p { font-size: 13px; font-family: 'Inter', sans-serif; line-height: 1.7; color: #4A4A5A; margin-bottom: 1.25rem; }
+  .dy-special-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+  .dy-special-pill { font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 20px; }
+  .dy-special-cta { border: none; padding: 11px 22px; border-radius: 24px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Poppins', sans-serif; display: inline-flex; align-items: center; gap: 6px; }
+
+  .dy-infantil { background: #fff; }
+  .dy-infantil .dy-special-img { background: #FFF5E8; border-color: #F0A500; color: #B87800; }
+  .dy-infantil .dy-special-img i { color: #F0A500; }
+  .dy-infantil .dy-section-label { color: #F0A500; }
+  .dy-infantil h2 { color: #2D2D3A; }
+  .dy-infantil .dy-special-pill { background: #FFF0CC; color: #8A5A00; }
+  .dy-infantil .dy-special-cta { background: #F0A500; color: #fff; }
+
+  .dy-mayores { background: #F9F7F4; }
+  .dy-mayores .dy-special-img { background: #E8DEFF; border-color: #6B3FA0; color: #6B3FA0; }
+  .dy-mayores .dy-special-img i { color: #6B3FA0; }
+  .dy-mayores .dy-section-label { color: #6B3FA0; }
+  .dy-mayores h2 { color: #2D2D3A; }
+  .dy-mayores .dy-special-pill { background: #F0E8FF; color: #4A2080; }
+  .dy-mayores .dy-special-cta { background: #6B3FA0; color: #fff; }
+
+  .dy-campanas { background: #E1F5EE; }
+  .dy-campanas .dy-special-img { background: #fff; border-color: #4CAF85; color: #0F6E56; }
+  .dy-campanas .dy-special-img i { color: #4CAF85; }
+  .dy-campanas .dy-section-label { color: #0F6E56; }
+  .dy-campanas h2 { color: #2D2D3A; }
+  .dy-campanas .dy-special-pill { background: #C8EEE0; color: #074D35; }
+  .dy-campanas .dy-special-cta { background: #4CAF85; color: #fff; }
+
+  .dy-why { background: #6B3FA0; }
+  .dy-why .dy-section-label { color: #C8F0D4; }
+  .dy-why h2 { color: #fff; }
+  .dy-why .dy-section-sub { color: rgba(255,255,255,0.75); }
+  .dy-why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+  .dy-why-card { background: rgba(255,255,255,0.1); border: 0.5px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 1.25rem; }
+  .dy-why-card i { font-size: 24px; color: #C8F0D4; margin-bottom: 8px; display: block; }
+  .dy-why-card h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .dy-why-card p { font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.5; font-family: 'Inter', sans-serif; }
+
+  .dy-gallery { background: #fff; }
+  .dy-gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .dy-gallery-item { aspect-ratio: 1; background: #F0E8FF; border-radius: 12px; border: 1.5px dashed #C4A8E8; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #8B5CC8; font-size: 11px; gap: 6px; }
+  .dy-gallery-item i { font-size: 24px; }
+
+  .dy-testimonials { background: #F9F7F4; }
+  .dy-test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .dy-test-card { background: #fff; border: 0.5px solid #e0d9f0; border-radius: 12px; padding: 1.25rem; }
+  .dy-test-stars { color: #F0A500; font-size: 13px; margin-bottom: 8px; }
+  .dy-test-card p { font-size: 12px; color: #4A4A5A; line-height: 1.6; font-family: 'Inter', sans-serif; margin-bottom: 12px; }
+  .dy-test-author { display: flex; align-items: center; gap: 8px; }
+  .dy-test-avatar { width: 32px; height: 32px; border-radius: 50%; background: #E8DEFF; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #6B3FA0; }
+  .dy-test-name { font-size: 12px; font-weight: 600; color: #2D2D3A; }
+  .dy-test-date { font-size: 10px; color: #8B8B9B; }
+
+  .dy-contact { background: #fff; display: flex; gap: 2rem; flex-wrap: wrap; }
+  .dy-contact-info { flex: 1; min-width: 220px; }
+  .dy-contact-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1.25rem; }
+  .dy-contact-item-icon { width: 36px; height: 36px; background: #F0E8FF; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .dy-contact-item-icon i { font-size: 18px; color: #6B3FA0; }
+  .dy-contact-item h5 { font-size: 12px; font-weight: 700; color: #2D2D3A; margin-bottom: 2px; }
+  .dy-contact-item p { font-size: 12px; color: #6B6B7B; font-family: 'Inter', sans-serif; }
+  .dy-map-placeholder { flex: 1; min-width: 240px; height: 220px; background: #E8DEFF; border-radius: 12px; border: 1.5px dashed #C4A8E8; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #8B5CC8; font-size: 12px; gap: 8px; }
+  .dy-wa-btn { width: 100%; background: #4CAF85; color: #fff; border: none; padding: 14px; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Poppins', sans-serif; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 1.5rem; }
+
+  .dy-footer { background: #2D2D3A; padding: 2rem; }
+  .dy-footer-top { display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .dy-footer-brand { flex: 1; min-width: 180px; }
+  .dy-footer-brand p { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-top: 8px; font-family: 'Inter', sans-serif; }
+  .dy-footer-col h5 { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 12px; letter-spacing: 0.05em; }
+  .dy-footer-col a { display: block; font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 6px; font-family: 'Inter', sans-serif; }
+  .dy-footer-bottom { border-top: 0.5px solid rgba(255,255,255,0.1); padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .dy-footer-bottom p { font-size: 11px; color: rgba(255,255,255,0.35); font-family: 'Inter', sans-serif; }
+  .dy-green-dot { width: 8px; height: 8px; background: #4CAF85; border-radius: 50%; display: inline-block; margin-right: 6px; }
+</style>
+
+<div class="dy-root">
+
+  <nav class="dy-nav">
+    <div class="dy-nav-logo">
+      <div class="dy-nav-logo-circle">
+        <svg viewBox="0 0 24 24" fill="#6B3FA0" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+          <path d="M12 2C9.5 2 7.5 3.5 6.5 5.5C5.5 4.5 4 4 3 5C1.5 6.5 2 9 3 10.5C2 12 2 14 3.5 15.5C4.5 18 6 21 8 22C9 22.5 10 21.5 10.5 20.5L11 19C11.3 18.2 11.7 18 12 18C12.3 18 12.7 18.2 13 19L13.5 20.5C14 21.5 15 22.5 16 22C18 21 19.5 18 20.5 15.5C22 14 22 12 21 10.5C22 9 22.5 6.5 21 5C20 4 18.5 4.5 17.5 5.5C16.5 3.5 14.5 2 12 2Z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="dy-nav-brand">DENTAL YESS <span>CENTRO ODONTOLÓGICO</span></div>
+      </div>
+    </div>
+    <div class="dy-nav-links">
+      <a href="#">Servicios</a>
+      <a href="#">Nosotros</a>
+      <a href="#">Programas</a>
+      <a href="#">Contacto</a>
+    </div>
+    <button class="dy-nav-cta"><i class="ti ti-calendar" aria-hidden="true"></i> Agendar cita</button>
+  </nav>
+
+  <section class="dy-hero">
+    <div class="dy-hero-blob dy-hero-blob-1"></div>
+    <div class="dy-hero-blob dy-hero-blob-2"></div>
+    <div class="dy-hero-content">
+      <span class="dy-hero-tag"><span class="dy-green-dot"></span>Ica, Perú · Atención previa cita</span>
+      <h1>Diseñamos y<br><em>devolvemos sonrisas</em></h1>
+      <p>Somos un centro odontológico especializado en brindarte tratamientos de calidad en un ambiente moderno, cálido y cercano. Tu salud dental en manos expertas.</p>
+      <div class="dy-hero-btns">
+        <button class="dy-btn-primary"><i class="ti ti-calendar" aria-hidden="true"></i> Agendar cita</button>
+        <button class="dy-btn-wa"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp</button>
+      </div>
+    </div>
+    <div class="dy-hero-img">
+      <div class="dy-hero-placeholder">
+        <i class="ti ti-user-circle" style="font-size:40px"></i>
+        <span>Foto Dra. Yessenia</span>
+        <span style="font-size:10px;opacity:0.7">placeholder</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="dy-section dy-about">
+    <div class="dy-about-img">
+      <i class="ti ti-user" style="font-size:36px"></i>
+      <span>Foto profesional</span>
+      <span style="font-size:10px;opacity:0.7">placeholder</span>
+    </div>
+    <div class="dy-about-content">
+      <p class="dy-section-label">Conócenos</p>
+      <h2>Dra. Yessenia Calsin Silva</h2>
+      <p style="font-size:13px;color:#6B3FA0;font-weight:600;margin-bottom:0.75rem;">Cirujano Dentista</p>
+      <p class="dy-section-sub" style="margin-bottom:1rem;">Profesional comprometida con la salud dental de sus pacientes, ofreciendo atención personalizada en un ambiente moderno y acogedor. Apasionada por la estética dental y el bienestar integral de cada persona.</p>
+      <p class="dy-section-sub" style="margin-bottom:0;">Nuestro consultorio proyecta una atmósfera ordenada, limpia y con ese toque de conexión con la naturaleza que hace que cada visita sea una experiencia diferente.</p>
+      <div class="dy-about-badges">
+        <span class="dy-badge">Cirujano Dentista</span>
+        <span class="dy-badge">Estética dental</span>
+        <span class="dy-badge dy-badge-green">Consciencia ambiental</span>
+        <span class="dy-badge">Atención cercana</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="dy-section dy-services">
+    <p class="dy-section-label">Nuestros tratamientos</p>
+    <h2>Servicios especializados</h2>
+    <p class="dy-section-sub">Ofrecemos una amplia gama de tratamientos dentales para toda la familia, con tecnología moderna y atención personalizada.</p>
+    <div class="dy-service-group">
+      <div class="dy-service-group-title"><i class="ti ti-sparkles" style="color:#6B3FA0;font-size:16px" aria-hidden="true"></i> Estética dental</div>
+      <div class="dy-service-cards">
+        <div class="dy-service-card"><div class="dy-service-card-icon"><i class="ti ti-sun" aria-hidden="true"></i></div><p>Blanqueamiento dental</p></div>
+        <div class="dy-service-card"><div class="dy-service-card-icon"><i class="ti ti-diamond" aria-hidden="true"></i></div><p>Carillas de cerámica</p></div>
+        <div class="dy-service-card"><div class="dy-service-card-icon"><i class="ti ti-color-swatch" aria-hidden="true"></i></div><p>Carillas de resina</p></div>
+        <div class="dy-service-card"><div class="dy-service-card-icon"><i class="ti ti-mood-smile" aria-hidden="true"></i></div><p>Diseño de sonrisa</p></div>
+      </div>
+    </div>
+    <div class="dy-service-group">
+      <div class="dy-service-group-title"><i class="ti ti-tool" style="color:#6B3FA0;font-size:16px" aria-hidden="true"></i> Restauración y salud</div>
+      <div class="dy-service-cards">
+        <div class="dy-service-card"><div class="dy-service-card-icon"><i class="ti ti-building" aria-hidden="true"></i></div><p>Restauraciones</p></div>
+        <div class="dy-service-card"><div class="dy-service-card-icon"><i class="ti ti-activity" aria-hidden="true"></i></div><p>Endodoncia</p></div>
+        <div class="dy-service-card"><div class="dy-service-card-icon"><i class="ti ti-scissors" aria-hidden="true"></i></div><p>Extracciones</p></div>
+        <div class="dy-service-card"><div class="dy-service-card-icon"><i class="ti ti-droplet" aria-hidden="true"></i></div><p>Claramiento dental</p></div>
+      </div>
+    </div>
+    <div class="dy-service-group">
+      <div class="dy-service-group-title"><i class="ti ti-arrows-sort" style="color:#6B3FA0;font-size:16px" aria-hidden="true"></i> Ortodoncia y prótesis</div>
+      <div class="dy-service-cards">
+        <div class="dy-service-card"><div class="dy-service-card-icon"><i class="ti ti-adjustments" aria-hidden="true"></i></div><p>Ortodoncia</p></div>
+        <div class="dy-service-card"><div class="dy-service-card-icon"><i class="ti ti-replace" aria-hidden="true"></i></div><p>Prótesis fijas</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUE INFANTIL -->
+  <section class="dy-special dy-infantil">
+    <div class="dy-special-img">
+      <i class="ti ti-mood-kid" aria-hidden="true"></i>
+      <span style="font-size:11px;color:#B87800;">Foto niños</span>
+      <span style="font-size:10px;opacity:0.6">placeholder</span>
+    </div>
+    <div class="dy-special-content">
+      <p class="dy-section-label" style="color:#F0A500;">Programa especial</p>
+      <h2>Odontología infantil</h2>
+      <p>Sabemos que la primera visita al dentista puede ser un momento especial para los más pequeños. Por eso creamos un ambiente amigable, seguro y sin miedo, donde los niños aprenden a cuidar su sonrisa desde temprana edad.</p>
+      <p style="margin-top:0.75rem;">Atendemos niños desde los primeros dientes, con técnicas adaptadas a cada etapa de su crecimiento y un trato lleno de paciencia y cariño.</p>
+      <div class="dy-special-pills">
+        <span class="dy-special-pill">Primera visita sin miedo</span>
+        <span class="dy-special-pill">Sellantes dentales</span>
+        <span class="dy-special-pill">Flúor preventivo</span>
+        <span class="dy-special-pill">Ortodoncia temprana</span>
+        <span class="dy-special-pill">Ambiente lúdico</span>
+      </div>
+      <button class="dy-special-cta"><i class="ti ti-calendar" aria-hidden="true"></i> Agendar cita infantil</button>
+    </div>
+  </section>
+
+  <!-- BLOQUE ADULTOS MAYORES -->
+  <section class="dy-special dy-mayores dy-special-reverse">
+    <div class="dy-special-img">
+      <i class="ti ti-heart-handshake" aria-hidden="true"></i>
+      <span style="font-size:11px;color:#6B3FA0;">Foto adulto mayor</span>
+      <span style="font-size:10px;opacity:0.6">placeholder</span>
+    </div>
+    <div class="dy-special-content">
+      <p class="dy-section-label" style="color:#6B3FA0;">Programa especial</p>
+      <h2>Atención al adulto mayor</h2>
+      <p>La salud bucal en la tercera edad requiere cuidados especiales. Brindamos atención empática, adaptada a las necesidades de nuestros pacientes mayores, con procedimientos pensados para su comodidad y bienestar.</p>
+      <p style="margin-top:0.75rem;">Trabajamos con prótesis, tratamientos de mantenimiento y prevención para mejorar su calidad de vida y devolver la confianza en su sonrisa.</p>
+      <div class="dy-special-pills">
+        <span class="dy-special-pill">Prótesis totales y parciales</span>
+        <span class="dy-special-pill">Trato empático</span>
+        <span class="dy-special-pill">Prevención periodontal</span>
+        <span class="dy-special-pill">Accesibilidad</span>
+      </div>
+      <button class="dy-special-cta"><i class="ti ti-calendar" aria-hidden="true"></i> Agendar cita</button>
+    </div>
+  </section>
+
+  <!-- BLOQUE CAMPAÑAS SALUD BUCAL -->
+  <section class="dy-special dy-campanas">
+    <div class="dy-special-img">
+      <i class="ti ti-school" aria-hidden="true"></i>
+      <span style="font-size:11px;color:#0F6E56;">Foto campaña</span>
+      <span style="font-size:10px;opacity:0.6">placeholder</span>
+    </div>
+    <div class="dy-special-content">
+      <p class="dy-section-label" style="color:#0F6E56;">Responsabilidad social</p>
+      <h2>Campañas de salud bucal</h2>
+      <p>Como parte de nuestro compromiso con la comunidad de Ica, realizamos campañas educativas de salud bucal dirigidas a colegios, organizaciones y comunidades vulnerables.</p>
+      <p style="margin-top:0.75rem;">Creemos que la prevención es la mejor herramienta. A través de charlas, demostraciones y atención gratuita o a bajo costo, llevamos el cuidado dental a quienes más lo necesitan.</p>
+      <div class="dy-special-pills">
+        <span class="dy-special-pill">Charlas educativas</span>
+        <span class="dy-special-pill">Visitas a colegios</span>
+        <span class="dy-special-pill">Atención comunitaria</span>
+        <span class="dy-special-pill">Prevención bucal</span>
+        <span class="dy-special-pill">Consciencia ambiental</span>
+      </div>
+      <button class="dy-special-cta"><i class="ti ti-users" aria-hidden="true"></i> Unirse a una campaña</button>
+    </div>
+  </section>
+
+  <section class="dy-section dy-why">
+    <p class="dy-section-label">¿Por qué elegirnos?</p>
+    <h2 style="color:#fff;">Tu bienestar es nuestra prioridad</h2>
+    <p class="dy-section-sub">Un espacio diseñado para que te sientas cómodo, seguro y en buenas manos desde el primer momento.</p>
+    <div class="dy-why-grid">
+      <div class="dy-why-card"><i class="ti ti-heart" aria-hidden="true"></i><h4>Atención cercana</h4><p>Trato personalizado y humano en cada visita</p></div>
+      <div class="dy-why-card"><i class="ti ti-leaf" aria-hidden="true"></i><h4>Ambiente natural</h4><p>Consultorio moderno con toque de naturaleza</p></div>
+      <div class="dy-why-card"><i class="ti ti-shield-check" aria-hidden="true"></i><h4>Profesional certificada</h4><p>Cirujano dentista con amplia experiencia</p></div>
+      <div class="dy-why-card"><i class="ti ti-clock" aria-hidden="true"></i><h4>Horario flexible</h4><p>Lun–Sáb de 9:00 a 19:00 hrs</p></div>
+      <div class="dy-why-card"><i class="ti ti-map-pin" aria-hidden="true"></i><h4>Zona céntrica</h4><p>Ubicados en el centro de Ica, fácil acceso</p></div>
+      <div class="dy-why-card"><i class="ti ti-users" aria-hidden="true"></i><h4>Para toda la familia</h4><p>Niños, adultos y adultos mayores</p></div>
+    </div>
+  </section>
+
+  <section class="dy-section dy-gallery">
+    <p class="dy-section-label">Resultados</p>
+    <h2>Antes y después</h2>
+    <p class="dy-section-sub">Cada sonrisa cuenta una historia. Conoce algunos de nuestros tratamientos.</p>
+    <div class="dy-gallery-grid">
+      <div class="dy-gallery-item"><i class="ti ti-photo" aria-hidden="true"></i><span>Antes / Después</span></div>
+      <div class="dy-gallery-item"><i class="ti ti-photo" aria-hidden="true"></i><span>Antes / Después</span></div>
+      <div class="dy-gallery-item"><i class="ti ti-photo" aria-hidden="true"></i><span>Antes / Después</span></div>
+      <div class="dy-gallery-item"><i class="ti ti-photo" aria-hidden="true"></i><span>Consultorio</span></div>
+    </div>
+  </section>
+
+  <section class="dy-section dy-testimonials">
+    <p class="dy-section-label">Testimonios</p>
+    <h2>Lo que dicen nuestros pacientes</h2>
+    <p class="dy-section-sub">La confianza de nuestros pacientes es nuestro mayor logro.</p>
+    <div class="dy-test-grid">
+      <div class="dy-test-card">
+        <div class="dy-test-stars">★★★★★</div>
+        <p>"Excelente atención, la doctora es muy profesional y amable. El consultorio es muy cómodo y limpio. Totalmente recomendado."</p>
+        <div class="dy-test-author"><div class="dy-test-avatar">MP</div><div><div class="dy-test-name">María P.</div><div class="dy-test-date">Blanqueamiento dental</div></div></div>
+      </div>
+      <div class="dy-test-card">
+        <div class="dy-test-stars">★★★★★</div>
+        <p>"Me realizaron el diseño de sonrisa y quedé encantada. La Dra. Yessenia explica todo con detalle y hace que te sientas tranquilo."</p>
+        <div class="dy-test-author"><div class="dy-test-avatar">CL</div><div><div class="dy-test-name">Carlos L.</div><div class="dy-test-date">Diseño de sonrisa</div></div></div>
+      </div>
+      <div class="dy-test-card">
+        <div class="dy-test-stars">★★★★★</div>
+        <p>"Llevo a toda mi familia aquí. Los niños no le tienen miedo al dentista gracias al trato tan amable. Un lugar de confianza."</p>
+        <div class="dy-test-author"><div class="dy-test-avatar">RS</div><div><div class="dy-test-name">Rosa S.</div><div class="dy-test-date">Paciente familiar</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dy-section dy-contact">
+    <div style="width:100%;margin-bottom:1.5rem;">
+      <p class="dy-section-label">Contáctanos</p>
+      <h2>Agenda tu cita hoy</h2>
+      <p class="dy-section-sub">Estamos listos para atenderte. Escríbenos o visítanos en nuestro consultorio.</p>
+    </div>
+    <div class="dy-contact-info">
+      <div class="dy-contact-item">
+        <div class="dy-contact-item-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+        <div><h5>Dirección</h5><p>Calle Lima N° 567, 2do piso<br>Ica, Perú</p></div>
+      </div>
+      <div class="dy-contact-item">
+        <div class="dy-contact-item-icon"><i class="ti ti-phone" aria-hidden="true"></i></div>
+        <div><h5>Teléfono / WhatsApp</h5><p>+51 985 624 227</p></div>
+      </div>
+      <div class="dy-contact-item">
+        <div class="dy-contact-item-icon"><i class="ti ti-clock" aria-hidden="true"></i></div>
+        <div><h5>Horario de atención</h5><p>Lunes a Sábado<br>9:00 a.m. – 7:00 p.m.</p></div>
+      </div>
+      <div class="dy-contact-item">
+        <div class="dy-contact-item-icon"><i class="ti ti-calendar" aria-hidden="true"></i></div>
+        <div><h5>Modalidad</h5><p>Atención previa cita</p></div>
+      </div>
+      <button class="dy-wa-btn"><i class="ti ti-brand-whatsapp" style="font-size:20px" aria-hidden="true"></i> Agendar por WhatsApp</button>
+    </div>
+    <div class="dy-map-placeholder">
+      <i class="ti ti-map" style="font-size:36px" aria-hidden="true"></i>
+      <span>Mapa Google Maps</span>
+      <span style="font-size:10px;opacity:0.7">placeholder</span>
+    </div>
+  </section>
+
+  <footer class="dy-footer">
+    <div class="dy-footer-top">
+      <div class="dy-footer-brand">
+        <div style="font-size:14px;font-weight:700;color:#fff;letter-spacing:0.05em;">DENTAL YESS</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:0.12em;margin-bottom:8px;">CENTRO ODONTOLÓGICO</div>
+        <p>Diseñamos y devolvemos sonrisas.<br>Ica, Perú.</p>
+      </div>
+      <div class="dy-footer-col">
+        <h5>Servicios</h5>
+        <a href="#">Blanqueamiento</a>
+        <a href="#">Diseño de sonrisa</a>
+        <a href="#">Ortodoncia</a>
+        <a href="#">Carillas</a>
+        <a href="#">Endodoncia</a>
+      </div>
+      <div class="dy-footer-col">
+        <h5>Programas</h5>
+        <a href="#">Odontología infantil</a>
+        <a href="#">Adultos mayores</a>
+        <a href="#">Campañas educativas</a>
+      </div>
+      <div class="dy-footer-col">
+        <h5>Contacto</h5>
+        <a href="#">+51 985 624 227</a>
+        <a href="#">Calle Lima N° 567, 2do piso</a>
+        <a href="#">Lun–Sáb 9:00–19:00</a>
+      </div>
+    </div>
+    <div class="dy-footer-bottom">
+      <p>© 2025 Dental Yess — Centro Odontológico. Todos los derechos reservados.</p>
+      <p style="color:rgba(255,255,255,0.25);">Ica, Perú</p>
+    </div>
+  </footer>
+
+</div>
