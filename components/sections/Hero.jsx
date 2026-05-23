@@ -69,7 +69,7 @@ export default function Hero() {
               variants={fadeUp}
               className="text-white/85 text-lg leading-relaxed mb-10 max-w-lg font-poppins font-light italic"
             >
-              Atención odontológica personalizada con la calidez y profesionalismo que mereces. 
+              Atención odontológica personalizada con la calidez y profesionalismo que mereces.
               Tu salud bucal es nuestra vocación.
             </motion.p>
 
@@ -141,7 +141,7 @@ export default function Hero() {
                   <p className="font-poppins font-bold text-white text-xl">Dental Yess</p>
                   <p className="text-white/80 text-xs tracking-widest uppercase mt-1">Centro Odontológico</p>
                   <p className="text-white/70 text-sm mt-4 font-light italic">
-                    "Tu sonrisa es nuestra mejor carta de presentación"
+                    &quot;Tu sonrisa es nuestra mejor carta de presentación&quot;
                   </p>
                   <div className="mt-4 flex justify-center gap-1">
                     {[...Array(5)].map((_, i) => (

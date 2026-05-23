@@ -45,7 +45,7 @@ export default function Testimonios() {
 
               {/* Texto */}
               <p className="text-gris-medio text-sm leading-relaxed italic flex-1 mb-6">
-                "{t.text}"
+                &quot;{t.text}&quot;
               </p>
 
               {/* Paciente */}
