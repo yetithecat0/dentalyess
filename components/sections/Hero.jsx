@@ -131,16 +131,16 @@ export default function Hero() {
             className="hidden lg:flex justify-center items-center"
           >
             <div className="relative">
-              <div className="w-72 h-72 xl:w-80 xl:h-80 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center shadow-2xl">
-                <div className="text-center p-8">
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white/30 flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" fill="white" className="w-10 h-10">
-                      <path d="M12 2C9.5 2 7.5 3.5 6.5 5.5C5.5 4.5 4 4 3 5C1.5 6.5 2 9 3 10.5C2 12 2 14 3.5 15.5C4.5 18 6 21 8 22C9 22.5 10 21.5 10.5 20.5L11 19C11.3 18.2 11.7 18 12 18C12.3 18 12.7 18.2 13 19L13.5 20.5C14 21.5 15 22.5 16 22C18 21 19.5 18 20.5 15.5C22 14 22 12 21 10.5C22 9 22.5 6.5 21 5C20 4 18.5 4.5 17.5 5.5C16.5 3.5 14.5 2 12 2Z" />
-                    </svg>
-                  </div>
+              <div className="w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border border-white/30 flex items-center justify-center shadow-2xl relative">
+                <img 
+                  src="/perfil_dentalyess.jpg" 
+                  alt="Dental Yess" 
+                  className="w-full h-full object-cover absolute inset-0"
+                />
+                <div className="absolute inset-0 bg-morado/40 backdrop-blur-[1px] flex flex-col justify-center items-center text-center p-8">
                   <p className="font-poppins font-bold text-white text-xl">Dental Yess</p>
-                  <p className="text-white/80 text-xs tracking-widest uppercase mt-1">Centro Odontológico</p>
-                  <p className="text-white/70 text-sm mt-4 font-light italic">
+                  <p className="text-white/90 text-xs tracking-widest uppercase mt-1">Centro Odontológico</p>
+                  <p className="text-white/85 text-sm mt-4 font-light italic">
                     &quot;Tu sonrisa es nuestra mejor carta de presentación&quot;
                   </p>
                   <div className="mt-4 flex justify-center gap-1">

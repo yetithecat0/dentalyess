@@ -12,10 +12,12 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full border-2 border-lavanda flex items-center justify-center bg-white shadow-sm">
-                <svg viewBox="0 0 24 24" fill="#6B3FA0" className="w-[22px] h-[22px]" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2C9.5 2 7.5 3.5 6.5 5.5C5.5 4.5 4 4 3 5C1.5 6.5 2 9 3 10.5C2 12 2 14 3.5 15.5C4.5 18 6 21 8 22C9 22.5 10 21.5 10.5 20.5L11 19C11.3 18.2 11.7 18 12 18C12.3 18 12.7 18.2 13 19L13.5 20.5C14 21.5 15 22.5 16 22C18 21 19.5 18 20.5 15.5C22 14 22 12 21 10.5C22 9 22.5 6.5 21 5C20 4 18.5 4.5 17.5 5.5C16.5 3.5 14.5 2 12 2Z"/>
-                </svg>
+              <div className="w-10 h-10 rounded-full border-2 border-lavanda overflow-hidden bg-white shadow-sm">
+                <img 
+                  src="/diente.jpg" 
+                  alt="Dental Yess" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="leading-tight">
                 <span className="block font-poppins font-bold text-sm text-white tracking-wide">

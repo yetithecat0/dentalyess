@@ -1,8 +1,53 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { GALLERY } from "@/lib/data";
 import { ImageIcon } from "lucide-react";
+
+function GalleryItem({ item, index }) {
+  const [hasError, setHasError] = useState(false);
+  const showImage = item.image && !hasError;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
+      className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 aspect-square border border-lavanda/40"
+    >
+      {showImage ? (
+        <img
+          src={item.image}
+          alt={item.title}
+          onError={() => setHasError(true)}
+          className="w-full h-full object-cover"
+        />
+      ) : (
+        <div className="w-full h-full bg-gradient-to-br from-lavanda to-morado/20 flex flex-col items-center justify-center p-4">
+          <ImageIcon className="w-10 h-10 text-morado/40 mb-3" />
+          <p className="font-poppins font-semibold text-sm text-gris-oscuro text-center">
+            {item.title}
+          </p>
+          <span className="mt-1.5 text-xs bg-morado/10 text-morado px-3 py-1 rounded-full">
+            {item.subtitle}
+          </span>
+        </div>
+      )}
+
+      {/* Overlay: visible por defecto, se oculta al pasar el cursor */}
+      {showImage && (
+        <div className="absolute inset-0 bg-morado/70 opacity-100 group-hover:opacity-0 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
+          <div className="text-center text-white p-4">
+            <p className="font-poppins font-bold text-base">{item.title}</p>
+            <p className="text-white/85 text-xs mt-1">{item.subtitle}</p>
+          </div>
+        </div>
+      )}
+    </motion.div>
+  );
+}
 
 export default function Galeria() {
   return (
@@ -29,45 +74,9 @@ export default function Galeria() {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {GALLERY.map((item, i) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 aspect-square border border-lavanda/40"
-            >
-              {/* Placeholder visual */}
-              <div className="w-full h-full bg-gradient-to-br from-lavanda to-morado/20 flex flex-col items-center justify-center p-4">
-                <ImageIcon className="w-10 h-10 text-morado/40 mb-3" />
-                <p className="font-poppins font-semibold text-sm text-gris-oscuro text-center">
-                  {item.title}
-                </p>
-                <span className="mt-1.5 text-xs bg-morado/10 text-morado px-3 py-1 rounded-full">
-                  {item.subtitle}
-                </span>
-              </div>
-
-              {/* Overlay hover */}
-              <div className="absolute inset-0 bg-morado/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
-                <div className="text-center text-white p-4">
-                  <p className="font-poppins font-bold text-base">{item.title}</p>
-                  <p className="text-white/80 text-xs mt-1">{item.subtitle}</p>
-                </div>
-              </div>
-            </motion.div>
+            <GalleryItem key={item.title} item={item} index={i} />
           ))}
         </div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-center text-gris-medio text-sm mt-8 italic"
-        >
-          📷 Las imágenes reales de resultados se agregarán próximamente
-        </motion.p>
       </div>
     </section>
   );

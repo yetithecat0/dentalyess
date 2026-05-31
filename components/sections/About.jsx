@@ -29,14 +29,35 @@ export default function About() {
           >
             <div className="relative bg-gradient-to-br from-lavanda to-morado/10 rounded-3xl p-8 shadow-md">
               {/* Avatar doctora */}
-              <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-br from-morado to-morado-light flex items-center justify-center shadow-lg mb-6">
-                <svg viewBox="0 0 24 24" fill="white" className="w-24 h-24 opacity-80">
-                  <path d="M12 2C9.5 2 7.5 3.5 6.5 5.5C5.5 4.5 4 4 3 5C1.5 6.5 2 9 3 10.5C2 12 2 14 3.5 15.5C4.5 18 6 21 8 22C9 22.5 10 21.5 10.5 20.5L11 19C11.3 18.2 11.7 18 12 18C12.3 18 12.7 18.2 13 19L13.5 20.5C14 21.5 15 22.5 16 22C18 21 19.5 18 20.5 15.5C22 14 22 12 21 10.5C22 9 22.5 6.5 21 5C20 4 18.5 4.5 17.5 5.5C16.5 3.5 14.5 2 12 2Z" />
-                </svg>
+              <div className="w-full h-72 sm:h-80 rounded-2xl overflow-hidden shadow-md mb-6 relative">
+                <img 
+                  src="/yessenia_calsin.jpg" 
+                  alt="Dra. Yessenia Calsin Silva" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="text-center">
-                <h3 className="font-poppins font-bold text-xl text-morado">Dra. Yessenia Calsin Silva</h3>
-                <p className="text-gris-medio text-sm mt-1">Cirujano Dentista · COP Reg.</p>
+                <h3 className="font-poppins font-bold text-xl text-morado">
+                  <a 
+                    href="https://www.linkedin.com/in/yessenia-c-29005b75" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:underline hover:text-morado-light transition-colors"
+                  >
+                    Dra. Yessenia Calsin Silva
+                  </a>
+                </h3>
+                <p className="text-gris-medio text-sm mt-1">
+                  <a 
+                    href="https://www.cop.org.pe/buscador-nacional" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:underline hover:text-morado transition-colors"
+                  >
+                    Cirujano Dentista
+                  </a>{" "}
+                  · COP Reg. 50050
+                </p>
               </div>
 
               {/* Card flotante */}
