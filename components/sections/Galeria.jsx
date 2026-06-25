@@ -4,6 +4,26 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { GALLERY } from "@/lib/data";
 import { ImageIcon } from "lucide-react";
+import Script from "next/script";
+import { CONTACT } from "@/lib/constants";
+
+function InstagramIcon({ className = "w-5 h-5" }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+    </svg>
+  );
+}
 
 function GalleryItem({ item, index }) {
   const [hasError, setHasError] = useState(false);
@@ -50,6 +70,8 @@ function GalleryItem({ item, index }) {
 }
 
 export default function Galeria() {
+  const { provider, id } = CONTACT.instagramWidget;
+
   return (
     <section id="galeria" className="py-24 bg-crema">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -72,12 +94,62 @@ export default function Galeria() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* 4 imágenes principales */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
           {GALLERY.map((item, i) => (
             <GalleryItem key={item.title} item={item} index={i} />
           ))}
         </div>
+
+        {/* Sección de Instagram */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-16 border-t border-lavanda/60 pt-16 text-center"
+        >
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <InstagramIcon className="w-6 h-6 text-morado" />
+            <h3 className="font-poppins font-bold text-xl sm:text-2xl text-gris-oscuro">
+              Síguenos en Instagram
+            </h3>
+          </div>
+          <p className="text-gris-medio text-sm mb-8 max-w-lg mx-auto">
+            Mantente al día con nuestros últimos casos clínicos, consejos de salud bucal y el día a día en nuestra clínica.
+          </p>
+
+          {/* Render del Widget */}
+          <div className="w-full bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-lavanda/40 min-h-[300px] flex items-center justify-center">
+            {provider === "elfsight" && (
+              <>
+                <div className={`elfsight-app-${id}`} data-elfsight-app-lazy></div>
+                <Script src="https://static.elfsight.com/platform/platform.js" async />
+              </>
+            )}
+            {provider === "behold" && (
+              <>
+                <div data-behold-id={id}></div>
+                <Script src="https://beholds.me/sdk/v1" async />
+              </>
+            )}
+          </div>
+
+          <div className="mt-8">
+            <a
+              href={CONTACT.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-morado text-white font-poppins font-semibold text-sm rounded-full shadow-sm hover:bg-morado-oscuro hover:shadow-md transition-all duration-300"
+            >
+              <InstagramIcon className="w-4 h-4" />
+              Ver perfil @dental_yess
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 }
+
+

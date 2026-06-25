@@ -59,14 +59,24 @@ export default function CampanasSalud() {
             </div>
 
             {/* Visual */}
-            <div className="flex justify-center">
-              <div className="w-56 h-56 rounded-full bg-gradient-to-br from-verde-menta to-verde-salvia flex items-center justify-center shadow-xl">
-                <div className="text-center">
-                  <Leaf className="w-16 h-16 text-white mx-auto mb-3" />
-                  <p className="font-poppins font-bold text-white text-lg">Comunidad</p>
-                  <p className="text-white/80 text-xs mt-1">salud para todos</p>
+            <div className="flex justify-center w-full">
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="w-full max-w-md aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-verde-menta/20 bg-white relative group"
+              >
+                <img 
+                  src="/campañas.jpeg" 
+                  alt="Campañas de salud comunitaria Dental Yess" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <div>
+                    <p className="font-poppins font-bold text-white text-lg">Dental Yess en la Comunidad</p>
+                    <p className="text-white/80 text-xs mt-1">Llevando sonrisas y salud a todos los rincones de Ica</p>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </motion.div>

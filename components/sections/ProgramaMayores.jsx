@@ -19,14 +19,24 @@ export default function ProgramaMayores() {
 
           <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
             {/* Visual — lado izquierdo */}
-            <div className="flex justify-center order-2 md:order-1">
-              <div className="w-56 h-56 rounded-full bg-gradient-to-br from-morado to-morado-light flex items-center justify-center shadow-xl">
-                <div className="text-center">
-                  <HeartHandshake className="w-16 h-16 text-white mx-auto mb-3" />
-                  <p className="font-poppins font-bold text-white text-lg">Mayores</p>
-                  <p className="text-white/80 text-xs mt-1">con cuidado especial</p>
+            <div className="flex justify-center order-2 md:order-1 w-full">
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="w-full max-w-md aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-morado/20 bg-white relative group"
+              >
+                <img 
+                  src="/adultos.jpeg" 
+                  alt="Programa de adultos mayores Dental Yess" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <div>
+                    <p className="font-poppins font-bold text-white text-lg">Atención con Calidez</p>
+                    <p className="text-white/80 text-xs mt-1">Cuidado especializado y adaptado para el adulto mayor</p>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Texto — lado derecho */}

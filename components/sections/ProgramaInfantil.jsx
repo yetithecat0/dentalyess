@@ -61,14 +61,24 @@ export default function ProgramaInfantil() {
             </div>
 
             {/* Visual */}
-            <div className="flex justify-center">
-              <div className="w-56 h-56 rounded-full bg-gradient-to-br from-amarillo to-amarillo/70 flex items-center justify-center shadow-xl">
-                <div className="text-center">
-                  <Smile className="w-16 h-16 text-white mx-auto mb-3" />
-                  <p className="font-poppins font-bold text-white text-lg">Niños felices</p>
-                  <p className="text-white/80 text-xs mt-1">sin miedo al dentista</p>
+            <div className="flex justify-center w-full">
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="w-full max-w-md aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-amarillo/20 bg-white relative group"
+              >
+                <img 
+                  src="/niños.jpeg" 
+                  alt="Programa de odontología infantil Dental Yess" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <div>
+                    <p className="font-poppins font-bold text-white text-lg">Experiencias Felices</p>
+                    <p className="text-white/80 text-xs mt-1">Cuidado dental lúdico y sin temor para los más pequeños</p>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </motion.div>
